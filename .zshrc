@@ -84,3 +84,6 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 source .zsh_user
+
+# added by travis gem
+[ -f /Users/kas/.travis/travis.sh ] && source /Users/kas/.travis/travis.sh
