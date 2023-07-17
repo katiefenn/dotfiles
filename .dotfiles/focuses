@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Helper functions for maintaining daily notes
+
+FOCUSESFILE="/Users/katie.fenn/Documents/Work-notes/work-focuses.md"
+
+function focuses {
+  if [[ $1 == "show" || $1 == "s"  ]]; then
+    grep -n "\[ \] FOCUS" $FOCUSESFILE | cut -f1 -f5- -d:
+  elif [[ $1 == "new" || $1 == "n"  ]]; then
+    {
+      echo "**$(date +'%d/%m/%Y %H:%M')**: [ ] FOCUS: $2";
+    } >> $FOCUSESFILE
+  elif [[ $1 == "complete" || $1 == "c"  ]]; then
+    sed -i .bak "$2s/\[ \]/\[x\]/" $FOCUSESFILE
+  fi
+}

@@ -1,0 +1,22 @@
+#!/bin/zsh
+
+# Helper functions for maintaining daily notes
+
+NOTESFILE="/Users/katie.fenn/Documents/Work-notes/work-notes.md"
+
+function notes {
+  if [[ $1 == "heading" || $1 == "h" ]]; then
+    {
+      HEADING="# $(date +'%A %B %d %Y')";
+      LENGTH=${#HEADING}
+
+      echo "";
+      echo "$HEADING"
+      printf -- '=%.0s' {1..$LENGTH}; echo "";
+    } >> $NOTESFILE
+  elif [[ $1 == "new" || $1 == "n"  ]]; then
+    {
+      echo "**$(date +'%H:%M')**: $2";
+    } >> $NOTESFILE
+  fi
+}

@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Reload config
+alias reload='source ~/.zshrc'
+
+# Command upgrade aliases
+alias find=fd
+
+# History search
+alias hgrep='history | grep'
+
+# Matching filenames search
+alias fgrep="rg --files-with-searches"
+
+# Vim aliases
+function fvgrep {
+	# Open matching files in vim tabs
+  rg --files-with-matches $1 | xargs -o vim -p
+}
+function fmgrep {
+	# Open matching files in MacVim tabs
+  rg --files-with-matches $1 | xargs -o mvim -p
+}
+
+# Pulsar aliases
+alias p="pulsar"
+function fpgrep {
+  rg --files-with-matches $1 | xargs -o pulsar
+}
